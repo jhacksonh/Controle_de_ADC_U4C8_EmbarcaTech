@@ -91,7 +91,11 @@ void manipulation_pixel_oled(int x, int y){
     oled_Update();
 }
 void create_border_oled(){
-    oled_Draw_Rectangle(3,3,128-4,64-4, border_oled, !border_oled);
+    if(border_oled){
+        oled_Draw_Rectangle(3,3,128-4,64-4, border_oled, !border_oled);
+    }else{
+        oled_Bold_Rectangle(2,2,122,58);
+    }
 }
 void manipulation_RGBled_pwm(int x, int y){
     bool wrap_led_r = (x > JOY_CENTER_X+200 || x < JOY_CENTER_X-200) && LEDS_RB;

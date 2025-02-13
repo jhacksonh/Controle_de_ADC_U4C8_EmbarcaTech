@@ -86,7 +86,12 @@ void oled_Write_String(const char *str, uint8_t x, uint8_t y){
 void oled_Draw_Rectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height, bool value, bool fill){
     ssd1306_rect(&ssd, x, y, width, height, value, fill); // Desenha um retângulo sólido ou contorno
 }
-
+void oled_Bold_Rectangle(uint8_t x, uint8_t y, uint8_t width, uint8_t height){
+  static bool fill = true;
+  fill = !fill;
+  ssd1306_fill(&ssd, !fill); // Limpa o display
+  ssd1306_rect(&ssd, x, y, width, height, fill, !fill); // Desenha um retângulo contorno
+}
 // Atualiza o display após alterações
 void oled_Update(){
     ssd1306_send_data(&ssd); // Envia os dados do buffer para o display
@@ -97,3 +102,4 @@ void oled_Clear(){
     ssd1306_fill(&ssd, false); // Define todos os pixels como apagados
     ssd1306_send_data(&ssd);   // Atualiza o display
 }
+
