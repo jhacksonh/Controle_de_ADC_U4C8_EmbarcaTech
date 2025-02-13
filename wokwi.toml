@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/Controle_de_ADC_U4C8_EmbarcaTech.uf2'
+elf = 'build/Controle_de_ADC_U4C8_EmbarcaTech.elf'
